@@ -163,7 +163,6 @@ trait SnapshotManagement { self: DeltaLog =>
 
       val latestCommit = deltas.last
       LogSegment(
-        logPath,
         latestCommit.version, // deltas is not empty, so can call .last
         deltas.map(_.fileStatus),
         Nil,

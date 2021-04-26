@@ -234,7 +234,7 @@ object Checkpoints extends DeltaLogging {
     // Use the string in the closure as Path is not Serializable.
     val resolvedPath = deltaLog.store.resolveCheckpointPath(snapshot.path)
     val path = checkpointFileSingular(resolvedPath, snapshot.version).toString
-    val base = snapshot.state
+    val writtenPath = snapshot.state
       .repartition(1)
       .map { action =>
         if (action.add != null) {
